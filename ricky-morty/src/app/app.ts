@@ -9,7 +9,7 @@ import { ThemeService } from './core/services/theming/theme.service';
   styleUrl: './app.scss',
 })
 export class App {
-  protected readonly title: Signal<string> = signal('ricky-morty-explorer');
+  protected readonly title: Signal<string> = signal('Ricky Morty Explorer');
   isDark = false;
 
   constructor(private readonly themeService: ThemeService) {}

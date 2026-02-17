@@ -1,20 +1,21 @@
-import { Injectable, Renderer2, signal } from '@angular/core';
+import { Injectable, signal } from '@angular/core';
 
 @Injectable({ providedIn: 'root' })
 export class ThemeService {
   private readonly darkThemeClass = signal('dark-theme');
 
-  constructor(private readonly renderer: Renderer2) {
+  constructor() {
     // Initialize theme based on user preference or default
     const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
     this.setDarkTheme(prefersDark);
   }
 
   setDarkTheme(isDark: boolean) {
+    const body = document.body;
     if (isDark) {
-      this.renderer.addClass(document.body, this.darkThemeClass());
+      body.classList.add(this.darkThemeClass());
     } else {
-      this.renderer.removeClass(document.body, this.darkThemeClass());
+      body.classList.remove(this.darkThemeClass());
     }
   }
 
