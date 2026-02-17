@@ -1,12 +1,25 @@
-import { Component, signal } from '@angular/core';
+import { Component, Signal, signal } from '@angular/core';
 import { RouterOutlet } from '@angular/router';
+import { ThemeService } from './core/services/theming/theme.service';
 
 @Component({
   selector: 'app-root',
   imports: [RouterOutlet],
   templateUrl: './app.html',
-  styleUrl: './app.scss'
+  styleUrl: './app.scss',
 })
 export class App {
-  protected readonly title = signal('ricky-morty');
+  protected readonly title: Signal<string> = signal('ricky-morty-explorer');
+  isDark = false;
+
+  constructor(private readonly themeService: ThemeService) {}
+
+  toggleTheme() {
+    this.isDark = !this.isDark;
+    this.themeService.setDarkTheme(this.isDark);
+  }
+
+  get themeLabel() {
+    return this.isDark ? 'Light Mode' : 'Dark Mode';
+  }
 }
