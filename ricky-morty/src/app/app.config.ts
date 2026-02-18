@@ -9,10 +9,12 @@ import { provideRouter } from '@angular/router';
 import { routes } from './app.routes';
 
 import { ConfigService } from './core/services/config.service';
+import { provideHttpClient } from '@angular/common/http';
 
 export const appConfig: ApplicationConfig = {
   providers: [
     provideBrowserGlobalErrorListeners(),
+    provideHttpClient(),
     provideRouter(routes),
     ConfigService,
     provideAppInitializer(() => {
