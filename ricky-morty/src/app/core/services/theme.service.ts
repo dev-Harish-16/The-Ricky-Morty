@@ -1,13 +1,15 @@
 import { Injectable, signal } from '@angular/core';
+import { ConfigService } from './config.service';
 
 @Injectable({ providedIn: 'root' })
 export class ThemeService {
   private readonly darkThemeClass = signal('dark-theme');
 
-  constructor() {
+  constructor(private readonly configService: ConfigService) {
     // Initialize theme based on user preference or default
-    const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
-    this.setDarkTheme(prefersDark);
+    this.configService.getConfig('theme') === 'dark'
+      ? this.setDarkTheme(true)
+      : this.setDarkTheme(false);
   }
 
   setDarkTheme(isDark: boolean) {
