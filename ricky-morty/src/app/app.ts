@@ -1,4 +1,4 @@
-import { Component, Signal, signal } from '@angular/core';
+import { ChangeDetectionStrategy, Component, inject, Signal, signal } from '@angular/core';
 import { RouterOutlet } from '@angular/router';
 import { ThemeService } from './core/services/theme.service';
 
@@ -7,12 +7,13 @@ import { ThemeService } from './core/services/theme.service';
   imports: [RouterOutlet],
   templateUrl: './app.html',
   styleUrl: './app.scss',
+  changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class App {
   protected readonly title: Signal<string> = signal('Ricky Morty Explorer');
-  isDark = false;
-
-  constructor(private readonly themeService: ThemeService) {}
+  private readonly themeService: ThemeService = inject(ThemeService);
+  isDark = this.themeService.isDark();
+  constructor() {}
 
   toggleTheme() {
     this.isDark = !this.isDark;
