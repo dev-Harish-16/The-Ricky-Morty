@@ -1,5 +1,5 @@
 import { inject, Injectable } from '@angular/core';
-import { Character } from '../data/modle/characters.model';
+import { Character } from '../data/model/characters.model';
 import { Observable, map } from 'rxjs';
 import { HttpClient } from '@angular/common/http';
 

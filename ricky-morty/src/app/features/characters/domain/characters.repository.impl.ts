@@ -1,7 +1,7 @@
 import { inject, Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { CharacterRepository } from '../data/repositoy/characters.repository';
-import { Character } from '../data/modle/characters.model';
+import { Character } from '../data/model/characters.model';
 
 import { CharacterApiService } from '../service/character';
 
