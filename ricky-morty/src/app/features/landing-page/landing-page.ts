@@ -1,24 +1,25 @@
 import { Component, inject, Signal, signal } from '@angular/core';
 import { ThemeService } from '../../core/services/theme.service';
+import { Card } from '../../shared/components/card/card';
 
 @Component({
   selector: 'app-landing-page',
-  imports: [],
+  imports: [Card],
   templateUrl: './landing-page.html',
   styleUrl: './landing-page.scss',
 })
 export class LandingPage {
   protected readonly title: Signal<string> = signal('Ricky Morty Explorer');
   private readonly themeService: ThemeService = inject(ThemeService);
-  isDark = this.themeService.isDark();
+  theme = this.themeService.getTheme();
   constructor() {}
 
   toggleTheme() {
-    this.isDark = !this.isDark;
-    this.themeService.setDarkTheme(this.isDark);
+    this.themeService.toggleTheme();
+    this.theme = this.themeService.getTheme();
   }
 
   get themeLabel() {
-    return this.isDark ? 'Light Mode' : 'Dark Mode';
+    return this.theme === 'dark' ? 'Dark Mode' : 'Light Mode';
   }
 }
