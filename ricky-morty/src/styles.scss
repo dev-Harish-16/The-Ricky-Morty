@@ -1,10 +1,12 @@
 @use '@angular/material' as mat;
 @use './styles/theme-colors' as theme;
-
+@import 'bootstrap/dist/css/bootstrap.min.css';
 @include mat.app-background();
 
+html,
 body {
   font-family: 'Creepster', cursive;
+  height: 100%;
 }
 
 html {
@@ -15,12 +17,13 @@ html {
         tertiary: theme.$tertiary-palette,
         theme-type: light,
       ),
-      fo density: 0,
+      typography: Creepster,
+      density: 0,
     )
   );
 }
 
-body.dark-mode {
+body.dark-theme {
   @include mat.theme(
     (
       color: (
@@ -28,6 +31,8 @@ body.dark-mode {
         tertiary: theme.$tertiary-palette,
         theme-type: dark,
       ),
+      typography: Creepster,
+      density: 0,
     )
   );
 }
