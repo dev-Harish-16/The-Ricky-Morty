@@ -1,5 +1,5 @@
 import { Observable } from 'rxjs';
-import { Character } from '../modle/characters.model';
+import { Character } from '../model/characters.model';
 
 export abstract class CharacterRepository {
   abstract getCharacters(): Observable<Character[]>;
