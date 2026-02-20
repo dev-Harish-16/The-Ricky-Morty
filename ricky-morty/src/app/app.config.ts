@@ -5,25 +5,25 @@ import {
   inject,
 } from '@angular/core';
 import { provideRouter } from '@angular/router';
-
 import { routes } from './app.routes';
-
 import { ConfigService } from './core/services/config.service';
 import { provideHttpClient } from '@angular/common/http';
+import { CharacterRepository } from './features/characters/data/repositoy/characters.repository';
+import { CharacterRepositoryImpl } from './features/characters/domain/characters.repository.impl';
+
+// add more implementations here and add to providers array
+const provideDependencyInversion = [
+  {
+    provide: CharacterRepository,
+    useClass: CharacterRepositoryImpl,
+  },
+];
 
 export const appConfig: ApplicationConfig = {
   providers: [
     provideBrowserGlobalErrorListeners(),
     provideHttpClient(),
     provideRouter(routes),
-    ConfigService,
-    provideAppInitializer(() => {
-      const configService = inject(ConfigService);
-      // Set initial config values here
-      configService.setConfig('apiUrl', 'https://rickandmortyapi.com/api');
-      const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
-      configService.setConfig('theme', prefersDark ? 'dark' : 'light');
-      return Promise.resolve();
-    }),
+    ...provideDependencyInversion,
   ],
 };
