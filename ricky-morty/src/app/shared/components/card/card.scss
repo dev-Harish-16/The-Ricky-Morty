@@ -1,0 +1,47 @@
+//check parent has col class then apply this styles to app-card
+:host-context(.col) {
+  display: flex;
+}
+
+.responsive-card {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  min-height: 250px;
+  overflow: hidden;
+  border-radius: 0.5rem;
+  margin: 0.75rem;
+}
+
+.image-section {
+  flex: 1;
+}
+
+.image-section img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center;
+  transition: opacity 0.3s ease;
+}
+
+.content-section {
+  flex: 1;
+  padding: 1rem;
+}
+
+/* Desktop */
+@media (min-width: 768px) {
+  .responsive-card {
+    flex-direction: row;
+    max-width: 600px;
+  }
+
+  .image-section {
+    flex: 0 0 40%;
+  }
+
+  .content-section {
+    flex: 1;
+  }
+}

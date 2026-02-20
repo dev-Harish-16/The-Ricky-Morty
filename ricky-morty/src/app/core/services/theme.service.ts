@@ -1,34 +1,37 @@
-import { effect, inject, Injectable, signal } from '@angular/core';
-import { ConfigService } from './config.service';
+import { Injectable, effect, signal } from '@angular/core';
+
+export type AppTheme = 'light' | 'dark';
 
 @Injectable({ providedIn: 'root' })
 export class ThemeService {
-  private readonly configService = inject(ConfigService);
+  private readonly THEME_KEY = 'app-theme';
 
-  readonly isDark = signal(false);
+  private readonly theme = signal<AppTheme>(this.getInitialTheme());
 
   constructor() {
-    const savedTheme = this.configService.getConfig('theme');
-    this.isDark.set(savedTheme === 'dark');
-
+    // Apply theme whenever it changes
+    console.log('INSTANCE ID:', Math.random());
     effect(() => {
-      const body = document.body;
-
-      if (this.isDark()) {
-        body.classList.add('dark-mode');
-      } else {
-        body.classList.remove('dark-mode');
-      }
+      const current = this.theme();
+      document.body.classList.remove('light-theme', 'dark-theme');
+      document.body.classList.add(`${current}-theme`);
+      localStorage.setItem(this.THEME_KEY, current);
     });
   }
 
   toggleTheme() {
-    this.isDark.update((value) => !value);
-    this.configService.setConfig('theme', this.isDark() ? 'dark' : 'light');
+    this.theme.update((t) => (t === 'light' ? 'dark' : 'light'));
   }
 
-  setDarkTheme(value: boolean) {
-    this.isDark.set(value);
-    this.configService.setConfig('theme', value ? 'dark' : 'light');
+  getTheme() {
+    return this.theme();
+  }
+
+  private getInitialTheme(): AppTheme {
+    const saved = localStorage.getItem(this.THEME_KEY) as AppTheme;
+    if (saved) return saved;
+
+    const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+    return prefersDark ? 'dark' : 'light';
   }
 }
