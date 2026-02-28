@@ -31,7 +31,7 @@ export class ThemeService {
     const saved = localStorage.getItem(this.THEME_KEY) as AppTheme;
     if (saved) return saved;
 
-    const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+    const prefersDark = globalThis.matchMedia('(prefers-color-scheme: dark)').matches;
     return prefersDark ? 'dark' : 'light';
   }
 }
