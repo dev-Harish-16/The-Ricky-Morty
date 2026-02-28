@@ -1,4 +1,10 @@
-<mat-card class="responsive-card mat-elevation-z4">
+<mat-card
+  class="responsive-card"
+  tabindex="0"
+  (click)="onSelect()"
+  (keydown.enter)="onSelect()"
+  (keydown.space)="onSelect(); $event.preventDefault()"
+>
   <div class="image-section">
     <img [src]="cardInfo().image" alt="Character" />
   </div>

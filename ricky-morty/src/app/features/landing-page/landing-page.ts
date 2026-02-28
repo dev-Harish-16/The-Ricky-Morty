@@ -1,10 +1,12 @@
 import { Component, inject, Signal, signal } from '@angular/core';
+import { RouterLink } from '@angular/router';
 import { ThemeService } from '../../core/services/theme.service';
-import { Card } from '../../shared/components/card/card';
+import { Loader } from '../../shared/components/loader/loader';
+import { MatButtonModule } from '@angular/material/button';
 
 @Component({
   selector: 'app-landing-page',
-  imports: [Card],
+  imports: [Loader, MatButtonModule, RouterLink],
   templateUrl: './landing-page.html',
   styleUrl: './landing-page.scss',
 })

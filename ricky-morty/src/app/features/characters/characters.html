@@ -1,8 +1,8 @@
-<div class="container">
-  <div class="row row-cols-1 row-cols-md-2 align-items-center">
-    @for (item of $getCharacters | async; track item.id) {
+<div class="container-fluid">
+  <div class="row row-cols-1 row-cols-md-3 align-items-center">
+    @for (item of getCharacters$ | async; track item.id) {
       <div class="col">
-        <app-card [cardInfo]="item"></app-card>
+        <app-card [cardInfo]="item" (selected)="OnCardSelection($event)"></app-card>
       </div>
     }
   </div>
