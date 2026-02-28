@@ -1,0 +1,65 @@
+:host {
+  display: inline-block;
+}
+:host-context(.mat-app-background) {
+  position: fixed;
+  top: 40%;
+  left: 44%;
+  transform: scale(4.4);
+}
+.portal-loader {
+  position: relative;
+  width: 150px;
+  height: 150px;
+}
+
+.portal {
+  width: 100%;
+  height: 100%;
+  border-radius: 50%;
+  position: relative;
+  background: radial-gradient(
+    circle at center,
+    #b4ff00 5%,
+    #7fff00 15%,
+    #39ff14 30%,
+    #00ff99 45%,
+    #00cc66 60%,
+    #003d1f 80%
+  );
+  animation: spin 2s linear infinite;
+  box-shadow:
+    0 0 20px #39ff14,
+    0 0 40px #00ff99,
+    0 0 60px #00ff99,
+    inset 0 0 30px #00ff99;
+}
+
+.portal::before,
+.portal::after {
+  content: '';
+  position: absolute;
+  inset: 10px;
+  border-radius: 50%;
+  background: conic-gradient(#39ff14, #00ff99, #7fff00, #39ff14);
+  mix-blend-mode: screen;
+  animation: swirl 3s linear infinite;
+}
+
+.portal::after {
+  inset: 20px;
+  animation-direction: reverse;
+  opacity: 0.7;
+}
+
+@keyframes spin {
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
+@keyframes swirl {
+  100% {
+    transform: rotate(360deg);
+  }
+}
