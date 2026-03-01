@@ -1,18 +1,6 @@
-<button
-  style="
-    position: absolute;
-    top: 1rem;
-    right: 1rem;
-    z-index: 10;
-    font-size: 1.5rem;
-    padding: 0.5rem 1rem;
-    cursor: pointer;
-  "
-  matButton="outlined"
-  (click)="toggleTheme()"
->
+<mat-slide-toggle class="slide-toggle" [checked]="checked()" (toggleChange)="toggleTheme()">
   {{ themeLabel }}
-</button>
+</mat-slide-toggle>
 <main class="main">
   <div class="content">
     <div class="left-side">
