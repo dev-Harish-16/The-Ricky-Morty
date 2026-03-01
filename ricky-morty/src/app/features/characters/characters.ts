@@ -1,31 +1,57 @@
-import { Component, inject } from '@angular/core';
+import {
+  ChangeDetectionStrategy,
+  Component,
+  inject,
+  OnDestroy,
+  OnInit,
+  signal,
+} from '@angular/core';
+
 import { CharacterRepository } from './data/repositoy/characters.repository';
 import { Card } from '../../shared/components/card/card';
-import { AsyncPipe } from '@angular/common';
-import { MatSnackBar } from '@angular/material/snack-bar';
+
+import { Router } from '@angular/router';
+import { Character } from './data/model/characters.model';
+import { Snackbar } from '../../shared/services/snackbar/snackbar';
+import { MatButtonModule } from '@angular/material/button';
 
 @Component({
   selector: 'app-characters',
-  imports: [Card, AsyncPipe],
+  imports: [Card, MatButtonModule],
   templateUrl: './characters.html',
   styleUrl: './characters.scss',
+  changeDetection: ChangeDetectionStrategy.Default,
 })
-export class Characters {
+export class Characters implements OnInit, OnDestroy {
   private readonly characterRepository: CharacterRepository = inject(CharacterRepository);
-  private readonly snackBar = inject(MatSnackBar);
-  getCharacters$ = this.characterRepository.getCharacters();
+  private readonly snackBar = inject(Snackbar);
+  private readonly router = inject(Router);
+  getCharacters = signal<Character[]>([]);
+  loading = true;
 
-  getCharacterById$(id: number) {
-    return this.characterRepository.getCharacterById(id);
+  ngOnInit() {
+    this.characterRepository.getCharacters().subscribe({
+      next: (characters) => {
+        this.getCharacters.set(characters);
+        this.snackBar.open(`Loaded ${characters.length} characters`, 'Close', 3000);
+        console.log(characters);
+        this.loading = false;
+      },
+      error: (err) => {
+        console.error('Error fetching characters:', err);
+        this.snackBar.open(`Failed to load characters`, 'Close', 3000);
+      },
+    });
   }
 
-  OnCardSelection(cardInfo: any) {
-    // Implement the logic to handle card selection, e.g., navigate to a detail page or display character details
-    console.log('Card selected:', cardInfo);
-    this.snackBar.open(`${cardInfo.name || 'Character'} selected`, 'Close', {
-      duration: 2000,
-      horizontalPosition: 'center',
-      verticalPosition: 'top',
-    });
+  onCardSelection(cardInfo: any) {
+    this.router.navigate(['characters', cardInfo.id]);
+  }
+  back() {
+    this.router.navigate(['home']);
+  }
+
+  ngOnDestroy(): void {
+    this.snackBar.destroy();
   }
 }

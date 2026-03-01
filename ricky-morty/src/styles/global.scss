@@ -1,0 +1,14 @@
+.back-btn {
+  align-self: end;
+  margin: 1rem 0;
+  padding: 6px 16px;
+  border-radius: 8px;
+  cursor: pointer;
+  font-weight: bold;
+  transition: all 0.2s ease;
+}
+
+.back-btn:hover {
+  background: #00ff87;
+  color: #020617 !important;
+}

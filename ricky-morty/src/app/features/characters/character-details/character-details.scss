@@ -1,0 +1,140 @@
+.details-wrapper {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  min-height: 100vh;
+  padding-inline: 1rem;
+}
+.label {
+  padding-right: 0.5rem;
+}
+
+/* Card */
+.details-card {
+  display: flex;
+  gap: 2rem;
+  max-width: 900px;
+  width: 100%;
+  border-radius: 16px;
+  padding: 2rem;
+  box-shadow: 0 0 20px rgba(0, 255, 135, 0.5);
+  border: 2px solid #00ff87;
+}
+
+/* Image Section */
+.image-section {
+  position: relative;
+}
+
+.image-section img {
+  width: 300px;
+  border-radius: 12px;
+  border: 2px solid #00ff87;
+  box-shadow: 0 0 20px #00ff87;
+  transition:
+    transform 0.3s ease,
+    box-shadow 0.3s ease;
+}
+
+/* Status Badge */
+.status-badge {
+  position: absolute;
+  top: 10px;
+  left: 10px;
+  padding: 6px 14px;
+  border-radius: 20px;
+  border: none;
+  font-weight: bold;
+  font-size: 14px;
+  color: #020617 !important;
+}
+
+.status-badge.alive {
+  background: #00ff87;
+  box-shadow:
+    0 0 8px #00ff87,
+    0 0 16px #39ff14;
+}
+
+.status-badge.dead {
+  background: #ff1744;
+  box-shadow:
+    0 0 8px #ff1744,
+    0 0 16px #ff4569;
+}
+
+.status-badge.unknown {
+  background: #757575;
+  box-shadow:
+    0 0 8px #757575,
+    0 0 16px #999;
+}
+
+/* Info Section */
+.info-section {
+  flex: 1;
+}
+
+.info-section h2 {
+  margin-bottom: 1rem;
+  font-size: 2rem;
+  color: #00ff87;
+  text-shadow:
+    0 0 5px #00ff87,
+    0 0 10px #39ff14;
+}
+
+.info-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 12px;
+  margin-bottom: 1.5rem;
+  color: #fff;
+}
+
+/* Episodes */
+.episodes {
+  margin-top: 1rem;
+}
+
+/* Toggle Show All button */
+.toggle-btn {
+  margin-top: 1rem;
+  background: none;
+  font-weight: 600;
+  cursor: pointer;
+}
+.image-section {
+  display: flex;
+  gap: 55px;
+}
+.description-section {
+  display: flex;
+  flex-direction: column;
+}
+.episode-chips {
+  max-height: 70px;
+  overflow-y: auto;
+}
+
+@media screen and (max-width: 768px) {
+  .details-card,
+  .image-section {
+    flex-direction: column;
+  }
+  .image-section img {
+    width: 100%;
+  }
+}
+
+mat-chip {
+  background: #00ff87;
+  color: #020617;
+  border-radius: 8px;
+  font-weight: bold;
+  cursor: pointer !important;
+}
+
+.episode-chip ::ng-deep .mdc-evolution-chip__action--presentational {
+  cursor: pointer;
+}

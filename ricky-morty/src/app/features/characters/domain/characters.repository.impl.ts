@@ -13,8 +13,7 @@ export class CharacterRepositoryImpl extends CharacterRepository {
   override getCharacters(): Observable<Character[]> {
     return this.characterApiService.getCharacters();
   }
-
-  override getCharacterById(id: number): Observable<Character[]> {
+  override getCharacterById(id: number): Observable<Character> {
     return this.characterApiService.getCharacterById(id);
   }
 }

@@ -1,8 +1,9 @@
-<div class="container-fluid">
+<div class="container-fluid d-flex flex-column align-items-center">
+  <button mat-stroked-button color="primary" class="back-btn" (click)="back()">Back</button>
   <div class="row row-cols-1 row-cols-md-3 align-items-center">
-    @for (item of getCharacters$ | async; track item.id) {
+    @for (item of getCharacters(); track item.id) {
       <div class="col">
-        <app-card [cardInfo]="item" (selected)="OnCardSelection($event)"></app-card>
+        <app-card [cardInfo]="item" (selected)="onCardSelection($event)"></app-card>
       </div>
     }
   </div>
