@@ -259,7 +259,7 @@ https://rickandmortyapi.com
 
 # 🛠️ Tech Stack
 
-- Angular (Standalone API)
+- Angular -21 (Standalone API)
 - Angular Material
 - TypeScript
 - SCSS
