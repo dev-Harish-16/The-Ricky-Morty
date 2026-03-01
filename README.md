@@ -1,19 +1,38 @@
 # 🛸 Rick & Morty Angular Application
 
-A modern Angular application that displays characters from the Rick & Morty universe using a clean, scalable architecture.
+![Angular](https://img.shields.io/badge/Angular-21-red)
+![Material](https://img.shields.io/badge/Angular_Material-MDC-blue)
+![State](https://img.shields.io/badge/State-Signals-orange)
+![Testing](https://img.shields.io/badge/Testing-Vitest-purple)
+![Architecture](https://img.shields.io/badge/Architecture-Clean-green)
+![License](https://img.shields.io/badge/License-Portfolio-lightgrey)
 
-This project demonstrates:
+---
 
-- ✅ Standalone Angular Architecture
-- ✅ Lazy Loaded Feature Routes
-- ✅ Clean Architecture (Repository Pattern + DI)
-- ✅ Dependency Inversion
-- ✅ Angular Material Theming (Light/Dark)
-- ✅ Signals for State Management
-- ✅ Vitest Unit Testing
-- ✅ Accessible & Keyboard-Friendly UI
+# 🚀 Live Demo
 
-Data is fetched from the public Rick and Morty API.
+🎥 Application Walkthrough:
+
+https://github.com/user-attachments/assets/25f2eb44-ecca-4c5d-a727-2c0d0ff8c9d6
+
+
+# 📌 Project Overview
+
+A modern **Angular 21 standalone application** that displays characters from the Rick & Morty universe using a scalable, clean architecture approach.
+
+This project demonstrates real-world Angular best practices including:
+
+- Standalone Components
+- Lazy Loaded Feature Routes
+- Clean Architecture
+- Dependency Inversion
+- Angular Signals for state management
+- Angular Material theming (Light/Dark)
+- Swappable data layer (API / Mock)
+- Unit testing with Vitest
+- Accessible UI patterns
+
+Data is fetched from the public Rick and Morty API
 
 ---
 
@@ -37,22 +56,21 @@ The application follows a **feature-based clean architecture** structure.
 
 ```
 src/
- └── app/
-     ├── core                   # Global models & singleton services
-     │
-     ├── features/
-     │     │
-     ├── shared/
-     │    └── components/
-     │
-     ├── app.routes.ts
-     ├── app.config.ts
-     └── main.ts
+└── app/
+├── core/ # Global models & singleton services
+│
+├── features/ # Feature modules (lazy loaded)
+│
+├── shared/ # Shared reusable UI components
+│
+├── app.routes.ts
+├── app.config.ts
+└── main.ts
 
- └── styles/
-      ├── _theme-colors.scss
-      |--- global.scss
-      └── styles.scss
+└── styles/
+├── _theme-colors.scss
+├── global.scss
+└── styles.scss
 ```
 
 ---
