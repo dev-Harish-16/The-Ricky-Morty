@@ -306,7 +306,3 @@ Built as a clean architecture Angular reference project.
 # 📄 License
 
 This project is for educational and portfolio purposes.
-
-# 🚀 Demo
-https://github.com/user-attachments/assets/25f2eb44-ecca-4c5d-a727-2c0d0ff8c9d6
-
