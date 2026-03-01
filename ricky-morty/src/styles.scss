@@ -1,5 +1,6 @@
 @use '@angular/material' as mat;
 @use './styles/theme-colors' as theme;
+@use './styles/global';
 @import 'bootstrap/dist/css/bootstrap.min.css';
 @include mat.app-background();
 
@@ -35,4 +36,40 @@ body.dark-theme {
       density: 0,
     )
   );
+}
+/* ===== Rick & Morty Portal Scrollbar ===== */
+
+/* Chrome / Edge */
+::-webkit-scrollbar {
+  width: 12px;
+  height: 12px;
+}
+
+::-webkit-scrollbar-track {
+  background: radial-gradient(circle at center, #0f172a, #020617);
+  border-radius: 10px;
+}
+
+::-webkit-scrollbar-thumb {
+  background: linear-gradient(180deg, #00ff87, #00e676, #00c853);
+  border-radius: 10px;
+  border: 2px solid #020617;
+  box-shadow:
+    0 0 6px #00ff87,
+    0 0 12px #00ff87;
+  transition: all 0.3s ease;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: linear-gradient(180deg, #39ff14, #00ff87, #00c853);
+  box-shadow:
+    0 0 10px #39ff14,
+    0 0 20px #00ff87,
+    0 0 30px #00ff87;
+}
+
+/* Firefox */
+* {
+  scrollbar-width: thin;
+  scrollbar-color: #00ff87 #020617;
 }

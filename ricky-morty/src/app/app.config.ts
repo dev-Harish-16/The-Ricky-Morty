@@ -1,11 +1,10 @@
 import { ApplicationConfig, provideBrowserGlobalErrorListeners } from '@angular/core';
-import { provideRouter } from '@angular/router';
+import { provideRouter, withViewTransitions } from '@angular/router';
 import { routes } from './app.routes';
 import { provideHttpClient } from '@angular/common/http';
 import { CharacterRepository } from './features/characters/data/repositoy/characters.repository';
 import { CharacterRepositoryImpl } from './features/characters/domain/characters.repository.impl';
 
-// add more implementations here and add to providers array
 const provideDependencyInversion = [
   {
     provide: CharacterRepository,
@@ -17,7 +16,7 @@ export const appConfig: ApplicationConfig = {
   providers: [
     provideBrowserGlobalErrorListeners(),
     provideHttpClient(),
-    provideRouter(routes),
+    provideRouter(routes, withViewTransitions()),
     ...provideDependencyInversion,
   ],
 };
