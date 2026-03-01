@@ -12,8 +12,8 @@
 /* Card */
 .details-card {
   display: flex;
-  gap: 2rem;
-  max-width: 900px;
+  gap: 1rem;
+  max-width: 80%;
   width: 100%;
   border-radius: 16px;
   padding: 2rem;
@@ -121,6 +121,9 @@
   .details-card,
   .image-section {
     flex-direction: column;
+  }
+  .image-section {
+    padding: 0 16px;
   }
   .image-section img {
     width: 100%;
