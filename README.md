@@ -290,4 +290,3 @@ Built as a clean architecture Angular reference project.
 This project is for educational and portfolio purposes.
 
 # 🚀 Demo
-![Ricky-Morty-demo-ezgif com-video-to-gif-converter](https://github.com/user-attachments/assets/eaf2971f-b40f-4d83-ae49-663e1b00afce)
