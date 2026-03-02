@@ -1,9 +1,9 @@
 import { Component, inject, Signal, signal } from '@angular/core';
+import { MatButtonModule } from '@angular/material/button';
+import { MatSlideToggleModule } from '@angular/material/slide-toggle';
 import { RouterLink } from '@angular/router';
 import { ThemeService } from '../../core/services/theme.service';
 import { Loader } from '../../shared/components/loader/loader';
-import { MatButtonModule } from '@angular/material/button';
-import { MatSlideToggleModule } from '@angular/material/slide-toggle';
 
 @Component({
   selector: 'app-landing-page',

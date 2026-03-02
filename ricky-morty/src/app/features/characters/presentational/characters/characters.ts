@@ -1,19 +1,19 @@
 import {
+  ChangeDetectionStrategy,
   Component,
   inject,
-  signal,
   OnDestroy,
   OnInit,
-  ChangeDetectionStrategy,
+  signal,
 } from '@angular/core';
+import { MatButtonModule } from '@angular/material/button';
+import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
 import { ActivatedRoute, Router } from '@angular/router';
 import { Card } from '../../../../shared/components/card/card';
 import { Snackbar } from '../../../../shared/services/snackbar/snackbar';
+import { FilterBox } from '../../components/filter-box/filter-box';
 import { Character, CharacterFilter } from '../../data/model/characters.model';
 import { CharacterRepository } from '../../data/repositoy/characters.repository';
-import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
-import { FilterBox } from '../filter-box/filter-box';
-import { MatButtonModule } from '@angular/material/button';
 
 @Component({
   selector: 'app-characters',

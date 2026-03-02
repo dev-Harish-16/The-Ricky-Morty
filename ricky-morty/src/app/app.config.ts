@@ -1,11 +1,10 @@
+import { provideHttpClient } from '@angular/common/http';
 import { ApplicationConfig, provideBrowserGlobalErrorListeners } from '@angular/core';
+import { MAT_FORM_FIELD_DEFAULT_OPTIONS } from '@angular/material/form-field';
 import { provideRouter, withViewTransitions } from '@angular/router';
 import { routes } from './app.routes';
-import { provideHttpClient, withInterceptors } from '@angular/common/http';
 import { CharacterRepository } from './features/characters/data/repositoy/characters.repository';
 import { CharacterRepositoryImpl } from './features/characters/domain/characters.repository.impl';
-import { MAT_FORM_FIELD_DEFAULT_OPTIONS } from '@angular/material/form-field';
-import { errorInterceptor } from './core/interceptor/error-interceptor';
 
 const provideDI = [
   {

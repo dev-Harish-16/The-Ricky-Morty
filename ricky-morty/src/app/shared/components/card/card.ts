@@ -14,7 +14,6 @@ export class Card {
 
   selected = output<Character>();
   onSelect() {
-    // Implement the logic to handle card selection, e.g., navigate to a detail page or emit an event
     this.selected.emit(this.cardInfo());
   }
 }

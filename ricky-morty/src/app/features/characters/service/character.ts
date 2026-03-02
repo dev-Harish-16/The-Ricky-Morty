@@ -1,8 +1,8 @@
-import { inject, Injectable } from '@angular/core';
-import { Character, CharacterFilter } from '../data/model/characters.model';
-import { Observable, catchError, map, of } from 'rxjs';
 import { HttpClient, HttpParams } from '@angular/common/http';
+import { inject, Injectable } from '@angular/core';
+import { catchError, map, Observable, of } from 'rxjs';
 import { Snackbar } from '../../../shared/services/snackbar/snackbar';
+import { Character, CharacterFilter } from '../data/model/characters.model';
 export interface ApiResponse {
   info: {
     count: number;
