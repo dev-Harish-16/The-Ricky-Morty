@@ -1,0 +1,28 @@
+<div class="container-fluid">
+  @if (loading()) {
+    <div class="loader-overlay">
+      <mat-spinner diameter="100"></mat-spinner>
+    </div>
+  }
+
+  <app-filter-box [parameters]="filterParams()" (applyFilters)="applyFilters($event)">
+  </app-filter-box>
+
+  <div class="d-flex flex-column align-items-center">
+    <button mat-stroked-button color="primary" class="back-btn" (click)="back()">Back</button>
+
+    @if (!loading() && getCharacters().length === 0) {
+      <div class="mt-4">
+        <h4>No characters found</h4>
+      </div>
+    }
+
+    <div class="row row-cols-1 row-cols-md-3">
+      @for (item of getCharacters(); track item.id) {
+        <div class="col">
+          <app-card [cardInfo]="item" (selected)="onCardSelection($event)"> </app-card>
+        </div>
+      }
+    </div>
+  </div>
+</div>
