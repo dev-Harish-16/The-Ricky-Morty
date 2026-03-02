@@ -1,11 +1,10 @@
-import { Component, inject, OnInit, input, output, effect, OnDestroy } from '@angular/core';
+import { Component, effect, inject, input, OnDestroy, OnInit, output } from '@angular/core';
 import { FormBuilder, FormControl, FormGroup, ReactiveFormsModule } from '@angular/forms';
 import { MatButtonModule } from '@angular/material/button';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
 import { MatRadioModule } from '@angular/material/radio';
 import { debounceTime, distinctUntilChanged, Subject, takeUntil } from 'rxjs';
-import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
 import { CharacterFilter } from '../../data/model/characters.model';
 
 @Component({
