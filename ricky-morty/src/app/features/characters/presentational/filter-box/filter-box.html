@@ -1,0 +1,41 @@
+<!-- FILTER FORM -->
+<form [formGroup]="filterForm" class="filter-container">
+  <div class="filter-row">
+    <div>
+      <mat-form-field appearance="outline">
+        <mat-label>Name</mat-label>
+        <input matInput formControlName="name" />
+      </mat-form-field>
+    </div>
+
+    <div>
+      <mat-form-field appearance="outline">
+        <mat-label>Species</mat-label>
+        <input matInput formControlName="species" />
+      </mat-form-field>
+    </div>
+  </div>
+  <div class="filter-row">
+    <div class="radio-section">
+      <label>Status:</label>
+      <mat-radio-group formControlName="status">
+        <mat-radio-button value="">All</mat-radio-button>
+        <mat-radio-button value="alive">Alive</mat-radio-button>
+        <mat-radio-button value="dead">Dead</mat-radio-button>
+        <mat-radio-button value="unknown">Unknown</mat-radio-button>
+      </mat-radio-group>
+    </div>
+
+    <div class="radio-section">
+      <label>Gender:</label>
+      <mat-radio-group formControlName="gender">
+        <mat-radio-button value="">All</mat-radio-button>
+        <mat-radio-button value="male">Male</mat-radio-button>
+        <mat-radio-button value="female">Female</mat-radio-button>
+        <mat-radio-button value="genderless">Genderless</mat-radio-button>
+        <mat-radio-button value="unknown">Unknown</mat-radio-button>
+      </mat-radio-group>
+    </div>
+  </div>
+  <button type="button" mat-stroked-button color="warn" (click)="resetFilters()">Reset</button>
+</form>
