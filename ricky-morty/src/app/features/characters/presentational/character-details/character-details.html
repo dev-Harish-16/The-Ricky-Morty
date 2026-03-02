@@ -6,12 +6,13 @@
       <!-- Image & Status -->
       <div class="image-section">
         <img mat-card-image [src]="c.image" [alt]="c.name" />
-        <div class="status-badge" [ngClass]="c.status.toLowerCase()">
-          {{ c.status }}
-        </div>
+
         <div class="description-section">
           <div>
-            <h2>{{ c?.name }}</h2>
+            <h2 class="d-flex">
+              {{ c?.name }}
+              <app-badge [status]="c.status"></app-badge>
+            </h2>
             <div><strong class="label">ID:</strong> {{ c.id }}</div>
             <div><strong class="label">Gender:</strong> {{ c.gender }}</div>
             <div><strong class="label">Species:</strong> {{ c.species }}</div>

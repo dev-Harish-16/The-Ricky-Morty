@@ -24,6 +24,8 @@
 /* Image Section */
 .image-section {
   position: relative;
+  display: flex;
+  gap: 55px;
 }
 
 .image-section img {
@@ -34,40 +36,6 @@
   transition:
     transform 0.3s ease,
     box-shadow 0.3s ease;
-}
-
-/* Status Badge */
-.status-badge {
-  position: absolute;
-  top: 10px;
-  left: 10px;
-  padding: 6px 14px;
-  border-radius: 20px;
-  border: none;
-  font-weight: bold;
-  font-size: 14px;
-  color: #020617 !important;
-}
-
-.status-badge.alive {
-  background: #00ff87;
-  box-shadow:
-    0 0 8px #00ff87,
-    0 0 16px #39ff14;
-}
-
-.status-badge.dead {
-  background: #ff1744;
-  box-shadow:
-    0 0 8px #ff1744,
-    0 0 16px #ff4569;
-}
-
-.status-badge.unknown {
-  background: #757575;
-  box-shadow:
-    0 0 8px #757575,
-    0 0 16px #999;
 }
 
 /* Info Section */
@@ -104,10 +72,7 @@
   font-weight: 600;
   cursor: pointer;
 }
-.image-section {
-  display: flex;
-  gap: 55px;
-}
+
 .description-section {
   display: flex;
   flex-direction: column;

@@ -22,3 +22,10 @@ export interface Location {
   name: string;
   url: string;
 }
+
+export interface CharacterFilter {
+  name: string;
+  status: string;
+  gender: string;
+  species: string;
+}

@@ -1,7 +1,7 @@
 import { Observable } from 'rxjs';
-import { Character } from '../model/characters.model';
+import { Character, CharacterFilter } from '../model/characters.model';
 
 export abstract class CharacterRepository {
-  abstract getCharacters(): Observable<Character[]>;
+  abstract getCharacters(filter?: Partial<CharacterFilter>): Observable<Character[]>;
   abstract getCharacterById(id: number): Observable<Character>;
 }

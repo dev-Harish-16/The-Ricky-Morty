@@ -1,0 +1,8 @@
+<span
+  class="status-badge"
+  [class.alive]="status() === 'alive'"
+  [class.dead]="status() === 'dead'"
+  [class.unknown]="status() === 'unknown'"
+>
+  {{ status() }}
+</span>
