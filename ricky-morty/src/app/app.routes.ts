@@ -7,12 +7,15 @@ export const routes: Routes = [
   },
   {
     path: 'characters',
-    loadComponent: () => import('./features/characters/characters').then((m) => m.Characters),
+    loadComponent: () =>
+      import('./features/characters/presentational/characters/characters').then(
+        (m) => m.Characters,
+      ),
   },
   {
     path: 'characters/:id',
     loadComponent: () =>
-      import('./features/characters/character-details/character-details').then(
+      import('./features/characters/presentational/character-details/character-details').then(
         (m) => m.CharacterDetails,
       ),
   },
