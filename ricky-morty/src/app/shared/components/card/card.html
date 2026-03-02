@@ -11,7 +11,8 @@
 
   <div class="content-section">
     <mat-card-header>
-      <mat-card-title>{{ cardInfo().name }}</mat-card-title>
+      <app-badge [status]="cardInfo().status"></app-badge>
+      <mat-card-title>{{ cardInfo().name }} </mat-card-title>
       <mat-card-subtitle>{{ cardInfo().species }}</mat-card-subtitle>
     </mat-card-header>
 

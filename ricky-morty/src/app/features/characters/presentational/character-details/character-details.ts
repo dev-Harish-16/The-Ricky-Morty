@@ -6,13 +6,14 @@ import { MatButtonModule } from '@angular/material/button';
 import { MatCardModule } from '@angular/material/card';
 import { MatChipsModule } from '@angular/material/chips';
 import { MatGridListModule } from '@angular/material/grid-list';
+import { Badge } from '../../../../shared/components/badge/badge';
 import { Character } from '../../data/model/characters.model';
 import { CharacterRepository } from '../../data/repositoy/characters.repository';
 
 @Component({
   selector: 'app-character-details',
   standalone: true,
-  imports: [CommonModule, MatCardModule, MatChipsModule, MatGridListModule, MatButtonModule],
+  imports: [CommonModule, MatCardModule, MatChipsModule, MatGridListModule, MatButtonModule, Badge],
   templateUrl: './character-details.html',
   styleUrls: ['./character-details.scss'],
   changeDetection: ChangeDetectionStrategy.Default,
