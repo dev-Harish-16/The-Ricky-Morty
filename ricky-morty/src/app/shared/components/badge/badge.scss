@@ -1,0 +1,22 @@
+/* Status Badge */
+.status-badge {
+  margin-inline: 1rem;
+  padding: 9px 14px;
+  border-radius: 20px;
+  border: none;
+  font-weight: bold;
+  font-size: 14px;
+  color: #020617 !important;
+}
+
+.status-badge.alive {
+  background: #00ff87;
+}
+
+.status-badge.dead {
+  background: #ff1744;
+}
+
+.status-badge.unknown {
+  background: #757575;
+}
