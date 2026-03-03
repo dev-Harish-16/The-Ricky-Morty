@@ -18,3 +18,21 @@
   align-items: center;
   height: 100%;
 }
+.pagination-container {
+  display: flex;
+  align-items: center;
+  align-self: flex-end;
+  justify-content: end;
+  gap: 24px;
+  margin-bottom: 60px;
+}
+
+.page-info {
+  font-size: 18px;
+  font-weight: 600;
+  color: #7cffcb;
+}
+
+button[disabled] {
+  opacity: 0.4;
+}
