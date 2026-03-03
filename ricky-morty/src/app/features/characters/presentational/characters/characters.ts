@@ -9,7 +9,7 @@ import {
 import { MatButtonModule } from '@angular/material/button';
 import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
 import { ActivatedRoute, Router } from '@angular/router';
-import { delay } from 'rxjs';
+
 import { Card } from '../../../../shared/components/card/card';
 import { Snackbar } from '../../../../shared/services/snackbar/snackbar';
 import { FilterBox } from '../../components/filter-box/filter-box';
@@ -34,10 +34,12 @@ export class Characters implements OnInit, OnDestroy {
   loading = signal(false);
 
   filterParams = signal<Partial<CharacterFilter>>({});
+  page = signal(1);
+  totalPages = signal(1);
 
   ngOnInit(): void {
-    // Only read query params once on init
     const params = this.route.snapshot.queryParams;
+
     const initialFilters: Partial<CharacterFilter> = {
       name: params['name'] || '',
       species: params['species'] || '',
@@ -45,38 +47,78 @@ export class Characters implements OnInit, OnDestroy {
       gender: params['gender'] || '',
     };
 
-    this.filterParams.set(initialFilters);
+    const initialPage = Number(params['page'] || 1);
 
-    // Load characters only once
-    this.loadCharacters(initialFilters);
+    this.filterParams.set(initialFilters);
+    this.page.set(initialPage);
+
+    this.loadCharacters(initialFilters, initialPage);
   }
 
   ngOnDestroy(): void {
     this.snackBar.destroy();
   }
 
-  loadCharacters(filters: Partial<CharacterFilter>) {
+  loadCharacters(filters: Partial<CharacterFilter>, page: number) {
     this.loading.set(true);
-    this.characterRepository
-      .getCharacters(filters)
-      .pipe(delay(500))
-      .subscribe({
-        next: (characters) => {
-          this.getCharacters.set(characters);
-        },
-        error: () => this.getCharacters.set([]),
-        complete: () => this.loading.set(false),
-      });
+
+    this.characterRepository.getCharacters(filters, page).subscribe({
+      next: (response) => {
+        this.getCharacters.set(response.results);
+        this.totalPages.set(response.info.pages);
+
+        window.scrollTo({ top: 0, behavior: 'smooth' });
+      },
+      error: () => {
+        this.getCharacters.set([]);
+      },
+      complete: () => {
+        this.loading.set(false);
+      },
+    });
   }
 
   applyFilters(filters: Partial<CharacterFilter>) {
-    if (JSON.stringify(this.filterParams()) === JSON.stringify(filters)) return;
+    if (JSON.stringify(this.filterParams()) === JSON.stringify(filters)) {
+      return;
+    }
 
     this.filterParams.set(filters);
-    this.loadCharacters(filters);
+    this.page.set(1); // reset page when filters change
 
-    // Only include non-empty filters in URL
-    const queryParams = Object.fromEntries(Object.entries(filters).filter(([_, value]) => value));
+    this.updateUrl();
+    this.loadCharacters(filters, 1);
+  }
+
+  nextPage() {
+    if (this.page() < this.totalPages()) {
+      const next = this.page() + 1;
+      this.page.set(next);
+
+      this.updateUrl();
+      this.loadCharacters(this.filterParams(), next);
+    }
+  }
+
+  prevPage() {
+    if (this.page() > 1) {
+      const prev = this.page() - 1;
+      this.page.set(prev);
+
+      this.updateUrl();
+      this.loadCharacters(this.filterParams(), prev);
+    }
+  }
+
+  private updateUrl() {
+    const cleanedFilters = Object.fromEntries(
+      Object.entries(this.filterParams()).filter(([_, value]) => value),
+    );
+
+    const queryParams = {
+      ...cleanedFilters,
+      page: this.page(),
+    };
 
     this.router.navigate([], {
       relativeTo: this.route,
