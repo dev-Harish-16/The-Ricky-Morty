@@ -1,7 +1,8 @@
 @use '@angular/material' as mat;
 @use './styles/theme-colors' as theme;
-@import './styles/global';
-@import './styles/material-overrides';
+@use './styles/global' as *;
+@use './styles/material-overrides' as *;
+
 @import 'bootstrap/dist/css/bootstrap.min.css';
 @include mat.app-background();
 
